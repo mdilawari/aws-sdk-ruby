@@ -31,6 +31,10 @@ module AWS
           expected[name.to_s] = { :exists => false }
         end if options[:unless_exists]
 
+        [options[:exists]].flatten.each do |name|
+          expected[name.to_s] = { :exists => true }
+        end if options[:exists]
+
         expected
       end
 
